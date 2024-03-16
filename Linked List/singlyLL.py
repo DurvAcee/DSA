@@ -8,14 +8,21 @@ class LinkedList:
         self.head = None
         self.count = 0
 
-    def add(self, node) -> None:
+    def append(self, newnode) -> None:
         if self.head is None:
-            self.head = node
+            self.head = newnode
         else:
             temp = self.head
             while temp.next is not None:
                 temp = temp.next
-            temp.next = node
+            temp.next = newnode
+        self.count += 1
+
+    def prepend(self, newnode) -> None:
+        temp = self.head
+        self.head = newnode
+        newnode.next = temp
+        del temp
         self.count += 1
 
     def print(self) -> None:
@@ -35,11 +42,9 @@ class LinkedList:
 firstNode = Node('Durvesh')
 secondNode = Node('Danve')
 ll = LinkedList()
-ll.add(firstNode)
-ll.add(secondNode)
+ll.append(firstNode)
+ll.append(secondNode)
+newnode = Node('SWE')
+ll.prepend(newnode)
 ll.print()
 ll.length()
-
-
-
-
