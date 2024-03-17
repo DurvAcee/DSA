@@ -25,6 +25,18 @@ class LinkedList:
         del temp
         self.count += 1
 
+    def insertAt(self, newnode, pos) -> None:
+        if pos is not 0:
+            temp = self.head
+            cnt = 0
+            while temp and cnt < pos:
+                temp = temp.next
+                cnt += 1
+            newnode.next = temp.next
+            temp.next = newnode
+        else:
+            self.prepend(newnode) 
+
     def print(self) -> None:
         if not self.head:
             print('List is empty')
@@ -41,10 +53,12 @@ class LinkedList:
 
 firstNode = Node('Durvesh')
 secondNode = Node('Danve')
+thirdNode = Node('Web Dev')
 ll = LinkedList()
 ll.append(firstNode)
 ll.append(secondNode)
 newnode = Node('SWE')
 ll.prepend(newnode)
+ll.insertAt(thirdNode, 0)
 ll.print()
 ll.length()
